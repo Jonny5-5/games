@@ -49,13 +49,17 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   Future<void> onLoad() async {
     // This defines the different animation states that the player can be in.
     animations = {
-      PlayerState.running: await game.loadSpriteAnimation(
-        'dash/dash_running.png',
-        SpriteAnimationData.sequenced(
-          amount: 4,
-          textureSize: Vector2.all(16),
-          stepTime: 0.15,
-        ),
+      // PlayerState.running: await game.loadSpriteAnimation(
+      //   'dash/dash_running.png',
+      //   SpriteAnimationData.sequenced(
+      //     amount: 4,
+      //     textureSize: Vector2.all(16),
+      //     stepTime: 0.15,
+      //   ),
+      // ),
+      PlayerState.running: SpriteAnimation.spriteList(
+        [await game.loadSprite('dash/lifeforce.png')],
+        stepTime: double.infinity,
       ),
       PlayerState.jumping: SpriteAnimation.spriteList(
         [await game.loadSprite('dash/dash_jumping.png')],
